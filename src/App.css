@@ -1,38 +1,147 @@
-.App {
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f5f9fd;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container */
+div[style*="max-width: 600px"] {
+  background: #fff;
+  margin: 40px auto;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px 0 rgba(127, 155, 175, 0.15);
+  padding: 2.5em 2em 2em 2em;
+  min-width: 320px;
+}
+
+/* Headings */
+h1 {
+  color: #253956;
+  text-align: center;
+  font-size: 2.1rem;
+  margin-bottom: 1.2em;
+}
+h2 {
+  margin: 2em 0 1em 0;
+  color: #4671c6;
+  font-size: 1.25em;
+  text-align: left;
+}
+
+/* AddUserForm */
+form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.5em;
+}
+input[type="text"] {
+  border-radius: 5px;
+  padding: 0.5em 0.8em;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input[type="text"]:focus {
+  border-color: #00c6fb;
+}
+button, .special-button {
+  background: linear-gradient(90deg, #00c6fb 0, #005bea 90%);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.49em 1.4em;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  transition: box-shadow 0.2s, background 0.2s;
+  box-shadow: 0 4px 14px 0 rgba(0, 198, 251, 0.09);
+  margin-top: 0.03em;
+}
+button:disabled, .special-button:disabled {
+  background: #b6d5f2;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+/* User selector */
+select {
+  border: 1px solid #dde0ec;
+  border-radius: 5px;
+  padding: 0.4em 0.8em;
+  font-size: 1em;
+  margin-left: 8px;
+  margin-top: 0.5em;
+}
+
+/* Claim Points Feedback */
+span[style*="You claimed"] {
+  color: #21c97b;
+  font-weight: 600;
+  margin-left: 18px;
+  font-size: 1.07em;
+  animation: popin 0.7s;
+}
+@keyframes popin {
+  0% { transform: scale(0.6); opacity: 0;}
+  80% { transform: scale(1.1);}
+  100% { transform: scale(1); opacity: 1;}
+}
+
+/* Tables (Leaderboard, History) */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #f6f9ff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1.5em;
+  font-size: 1em;
+}
+th, td {
+  padding: 0.82em 0.5em;
+  text-align: left;
+}
+th {
+  background: #e8f0fb;
+  color: #2577c9;
+  font-weight: 700;
+  font-size: 1.04em;
+}
+
+/* Leaderboard row styling */
+tbody tr:nth-child(even) {
+  background: #f9fcff;
+}
+td.rank-num {
+  font-size: 1.13em;
+  font-weight: 700;
+  color: #d4b620;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+tbody tr:last-child {
+  border-bottom: 2px solid #c4d0ee;
+}
+tr.rank-me {
+  background: #e2f4de;
+  font-weight: bold;
+}
+tfoot tr {
+  background: #f2dede;
+  color: #801313;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Responsive */
+@media (max-width: 700px) {
+  div[style*="max-width: 600px"] {
+    max-width: 97vw;
+    padding: 1em 0.4em;
+    font-size: 1em;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+  table, th, td {
+    font-size: 0.97em;
+    padding: 0.57em 0.17em;
   }
 }
