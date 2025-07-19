@@ -5,6 +5,7 @@ import AddUserForm from './components/AddUserForm';
 import ClaimButton from './components/ClaimButton';
 import Leaderboard from './components/Leaderboard.js';
 import ClaimHistory from './components/ClaimHistory';
+import TopRankers from './components/TopRankers';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -58,14 +59,14 @@ function App() {
 
   // Fetch users from backend API
   const fetchUsers = async () => {
-    const res = await fetch(`${API_URL}/users`);
+    const res = await fetch(`http://localhost:5000/api/users`);
     const data = await res.json();
     setUsers(data);
   };
 
   // Fetch claim history from backend API
   const fetchHistory = async () => {
-    const res = await fetch(`${API_URL}/claims`);
+    const res = await fetch(`http://localhost:5000/api/claims`);
     const data = await res.json();
     setHistory(data);
   };
@@ -78,7 +79,7 @@ function App() {
 
   // Add a new user
   const handleAddUser = async (name) => {
-    await fetch(`${API_URL}/users`, {
+    await fetch(`http://localhost:5000/api/users`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name }),
@@ -88,7 +89,7 @@ function App() {
 
   // Claim points for the selected user
   const handleClaim = async () => {
-    const res = await fetch(`${API_URL}/claims`, {
+    const res = await fetch(`http://localhost:5000/api/claims`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: selectedUserId }),
@@ -138,6 +139,12 @@ function App() {
               />
             </Box>
           </Paper>
+
+          {/* Top 3 Rankers with bouncing animation */}
+          <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
+            <TopRankers users={users} />
+          </Paper>
+
           {/* Main content: Leaderboard and Recent Claims side by side */}
           <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap', alignItems: 'flex-start' }}>
             {/* Leaderboard card */}
