@@ -59,14 +59,14 @@ function App() {
 
   // Fetch users from backend API
   const fetchUsers = async () => {
-    const res = await fetch(`http://localhost:5000/api/users`);
+    const res = await fetch(`${API_URL}/users`);
     const data = await res.json();
     setUsers(data);
   };
 
   // Fetch claim history from backend API
   const fetchHistory = async () => {
-    const res = await fetch(`http://localhost:5000/api/claims`);
+    const res = await fetch(`${API_URL}/claims`);
     const data = await res.json();
     setHistory(data);
   };
@@ -79,7 +79,7 @@ function App() {
 
   // Add a new user
   const handleAddUser = async (name) => {
-    await fetch(`http://localhost:5000/api/users`, {
+    await fetch(`${API_URL}/users`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name }),
@@ -89,7 +89,7 @@ function App() {
 
   // Claim points for the selected user
   const handleClaim = async () => {
-    const res = await fetch(`http://localhost:5000/api/claims`, {
+    const res = await fetch(`${API_URL}/claims`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId: selectedUserId }),
