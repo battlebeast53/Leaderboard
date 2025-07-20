@@ -32,7 +32,7 @@ function ClaimHistory({ history }) {
         disablePadding
         sx={{
           overflowY: 'auto',
-          maxHeight: 700,
+          maxHeight: 800,
           minHeight: 0,
           pr: 1,
         }}
